@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     height: '140%',
     right: 0,
     transform: [
-      { rotate: '135 deg' },
+      { rotate: '135deg' },
       { translateX: VERTICAL_DIVIDER_OFFSET * 0.6 },
       { translateY: VERTICAL_DIVIDER_OFFSET * 1.45 },
     ],
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     height: '140%',
     left: 0,
     transform: [
-      { rotate: '45 deg' },
+      { rotate: '45deg' },
       { translateX: VERTICAL_DIVIDER_OFFSET * 0.6 },
       { translateY: -VERTICAL_DIVIDER_OFFSET * 1.45 },
     ],
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   v1: {
     right: 0,
     transform: [
-      { rotate: '90 deg' },
+      { rotate: '90deg' },
       { translateX: -VERTICAL_DIVIDER_OFFSET },
       { translateY: HORIZONTAL_DIVIDER_OFFSET - ALL_DIVIDERS_WIDTH },
     ],
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   v2: {
     right: 0,
     transform: [
-      { rotate: '90 deg' },
+      { rotate: '90deg' },
       { translateX: 0 },
       { translateY: HORIZONTAL_DIVIDER_OFFSET - ALL_DIVIDERS_WIDTH },
     ],
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   v3: {
     right: 0,
     transform: [
-      { rotate: '90 deg' },
+      { rotate: '90deg' },
       { translateX: VERTICAL_DIVIDER_OFFSET },
       { translateY: HORIZONTAL_DIVIDER_OFFSET - ALL_DIVIDERS_WIDTH },
     ],
