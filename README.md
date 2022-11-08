@@ -7,7 +7,7 @@ This is a simple Tic Tac Toe game written in React Native. It is a simple game t
 Install NPM dependencies
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 Run the app
