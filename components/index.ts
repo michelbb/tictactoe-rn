@@ -1,1 +1,1 @@
-export * from "./TicTacToeBoard";
+export * from './TicTacToeBoard';

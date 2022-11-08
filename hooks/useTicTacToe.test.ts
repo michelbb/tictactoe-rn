@@ -1,4 +1,4 @@
-import { act, renderHook } from "@testing-library/react-native";
+import { act, renderHook } from '@testing-library/react-native';
 
 import {
   checkBoardForWinningCondition,
@@ -6,9 +6,9 @@ import {
   initialBoardState,
   PlayerSymbol,
   useTicTacToe,
-} from ".";
+} from '.';
 
-describe("useTicTacToe", () => {
+describe('useTicTacToe', () => {
   it.each([
     [
       initialBoardState,
@@ -48,17 +48,12 @@ describe("useTicTacToe", () => {
       ],
     ],
   ])(
-    "should return a correct new board state when calling getNewBoardState",
+    'should return a correct new board state when calling getNewBoardState',
     (boardState, playerSymbol, rowIndex, columnIndex, expectedBoardState) => {
-      const newBoardState = getNewBoardState(
-        boardState,
-        playerSymbol,
-        rowIndex,
-        columnIndex
-      );
+      const newBoardState = getNewBoardState(boardState, playerSymbol, rowIndex, columnIndex);
 
       expect(newBoardState).toEqual(expectedBoardState);
-    }
+    },
   );
   it.each([
     [
@@ -80,7 +75,7 @@ describe("useTicTacToe", () => {
       ],
       {
         winner: PlayerSymbol.X,
-        winningLineStartPosition: "v2",
+        winningLineStartPosition: 'v2',
       },
     ],
     [
@@ -91,7 +86,7 @@ describe("useTicTacToe", () => {
       ],
       {
         winner: PlayerSymbol.X,
-        winningLineStartPosition: "h3",
+        winningLineStartPosition: 'h3',
       },
     ],
     [
@@ -101,7 +96,7 @@ describe("useTicTacToe", () => {
         [PlayerSymbol.X, PlayerSymbol.O, PlayerSymbol.X],
       ],
       {
-        winner: "draw",
+        winner: 'draw',
         winningLineStartPosition: undefined,
       },
     ],
@@ -113,18 +108,18 @@ describe("useTicTacToe", () => {
       ],
       {
         winner: PlayerSymbol.O,
-        winningLineStartPosition: "d1",
+        winningLineStartPosition: 'd1',
       },
     ],
   ])(
-    "should check correctly if the game ended in checkBoardForWinningCondition",
+    'should check correctly if the game ended in checkBoardForWinningCondition',
     (boardState, expectedBoardWinningStatus) => {
       const result = checkBoardForWinningCondition(boardState);
 
       expect(result).toEqual(expectedBoardWinningStatus);
-    }
+    },
   );
-  it("should correctly play the game", () => {
+  it('should correctly play the game', () => {
     const { result, rerender } = renderHook(useTicTacToe);
 
     expect(result.current.boardState).toEqual(initialBoardState);
@@ -204,7 +199,7 @@ describe("useTicTacToe", () => {
       [PlayerSymbol.X, null, null],
     ]);
     expect(result.current.winner).toEqual(PlayerSymbol.X);
-    expect(result.current.winningLineStartPosition).toEqual("v1");
+    expect(result.current.winningLineStartPosition).toEqual('v1');
     expect(result.current.currentPlayer).toEqual(PlayerSymbol.X);
 
     act(() => {
@@ -221,7 +216,7 @@ describe("useTicTacToe", () => {
     ]);
 
     expect(result.current.winner).toEqual(PlayerSymbol.X);
-    expect(result.current.winningLineStartPosition).toEqual("v1");
+    expect(result.current.winningLineStartPosition).toEqual('v1');
     expect(result.current.currentPlayer).toEqual(PlayerSymbol.X);
 
     act(() => {
@@ -236,7 +231,7 @@ describe("useTicTacToe", () => {
     expect(result.current.currentPlayer).toEqual(PlayerSymbol.X);
   });
 
-  it("resetting the game works as expected", () => {
+  it('resetting the game works as expected', () => {
     const { result, rerender } = renderHook(useTicTacToe);
 
     expect(result.current.boardState).toEqual(initialBoardState);
@@ -271,7 +266,7 @@ describe("useTicTacToe", () => {
     expect(result.current.currentPlayer).toEqual(PlayerSymbol.X);
   });
 
-  it("taking a turn on a taken cell does nothing", () => {
+  it('taking a turn on a taken cell does nothing', () => {
     const expectedBoardState = [
       [null, null, null],
       [null, null, null],
@@ -305,7 +300,7 @@ describe("useTicTacToe", () => {
     expect(result.current.currentPlayer).toEqual(PlayerSymbol.O);
   });
 
-  it("taking a turn on a cell outside the board does nothing", () => {
+  it('taking a turn on a cell outside the board does nothing', () => {
     const { result, rerender } = renderHook(useTicTacToe);
 
     act(() => {

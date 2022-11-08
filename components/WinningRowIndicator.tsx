@@ -39,11 +39,7 @@ export const WinningRowIndicator: React.FC<WinningRowIndicatorProps> = ({
 
   return (
     <Animated.View
-      style={[
-        { backgroundColor: color, opacity },
-        styles.base,
-        styles[winningLineStartPosition],
-      ]}
+      style={[{ backgroundColor: color, opacity }, styles.base, styles[winningLineStartPosition]]}
     />
   );
 };

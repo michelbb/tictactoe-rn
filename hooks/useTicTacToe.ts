@@ -1,19 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
 export enum PlayerSymbol {
-  X = "X",
-  O = "O",
+  X = 'X',
+  O = 'O',
 }
-export type Winner = PlayerSymbol | "draw" | null;
-export type WinningLineStartPosition =
-  | "h1"
-  | "h2"
-  | "h3"
-  | "v1"
-  | "v2"
-  | "v3"
-  | "d1"
-  | "d2";
+export type Winner = PlayerSymbol | 'draw' | null;
+export type WinningLineStartPosition = 'h1' | 'h2' | 'h3' | 'v1' | 'v2' | 'v3' | 'd1' | 'd2';
 
 type BoardState = (PlayerSymbol | null)[][];
 
@@ -31,9 +23,7 @@ const initialWinner: Winner = null;
 const playerX: PlayerSymbol = PlayerSymbol.X;
 const playerO: PlayerSymbol = PlayerSymbol.O;
 
-export const checkBoardForWinningCondition = (
-  boardState: BoardState
-): BoardWinningStatus => {
+export const checkBoardForWinningCondition = (boardState: BoardState): BoardWinningStatus => {
   const winningLines = [
     // Horizontal
     [boardState[0][0], boardState[0][1], boardState[0][2]],
@@ -66,12 +56,11 @@ export const checkBoardForWinningCondition = (
     }
   }
 
-  const isDraw =
-    boardState.flat().some((playerSymbol) => playerSymbol === null) === false;
+  const isDraw = boardState.flat().some((playerSymbol) => playerSymbol === null) === false;
 
   if (isDraw) {
     return {
-      winner: "draw",
+      winner: 'draw',
     };
   }
 
@@ -84,7 +73,7 @@ export const getNewBoardState = (
   boardState: BoardState,
   currentPlayerSymbol: PlayerSymbol,
   rowIndex: number,
-  columnIndex: number
+  columnIndex: number,
 ) => {
   const newBoardState = boardState.map((currentRow, currentRowIndex) => {
     if (currentRowIndex === rowIndex) {
@@ -104,13 +93,11 @@ export const getNewBoardState = (
 };
 
 export const useTicTacToe = () => {
-  const [boardState, setBoardState] =
-    React.useState<BoardState>(initialBoardState);
+  const [boardState, setBoardState] = React.useState<BoardState>(initialBoardState);
   const [winner, setWinner] = React.useState<Winner>(initialWinner);
   const [winningLineStartPosition, setWinningLineStartPosition] =
     React.useState<WinningLineStartPosition>();
-  const [currentPlayer, setCurrentPlayer] =
-    React.useState<PlayerSymbol>(playerX);
+  const [currentPlayer, setCurrentPlayer] = React.useState<PlayerSymbol>(playerX);
 
   const reset = React.useCallback(() => {
     setBoardState(initialBoardState);
@@ -121,10 +108,7 @@ export const useTicTacToe = () => {
 
   const takeTurn = React.useCallback(
     (rowIndex: number, columnIndex: number) => {
-      if (
-        rowIndex > boardState.length - 1 ||
-        columnIndex > boardState[rowIndex].length - 1
-      ) {
+      if (rowIndex > boardState.length - 1 || columnIndex > boardState[rowIndex].length - 1) {
         return;
       }
 
@@ -132,12 +116,7 @@ export const useTicTacToe = () => {
         return;
       }
 
-      const newBoardState = getNewBoardState(
-        boardState,
-        currentPlayer,
-        rowIndex,
-        columnIndex
-      );
+      const newBoardState = getNewBoardState(boardState, currentPlayer, rowIndex, columnIndex);
 
       setBoardState(newBoardState);
 
@@ -145,14 +124,12 @@ export const useTicTacToe = () => {
 
       if (boardWinningStatus.winner !== null) {
         setWinner(boardWinningStatus.winner);
-        setWinningLineStartPosition(
-          boardWinningStatus.winningLineStartPosition
-        );
+        setWinningLineStartPosition(boardWinningStatus.winningLineStartPosition);
       } else {
         setCurrentPlayer(currentPlayer === playerX ? playerO : playerX);
       }
     },
-    [boardState, currentPlayer, winner]
+    [boardState, currentPlayer, winner],
   );
 
   return {
